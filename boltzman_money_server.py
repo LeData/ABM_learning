@@ -2,7 +2,7 @@ from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid, ChartModule, TextElement
 from mesa.visualization.UserParam import UserSettableParameter
 
-from boltzman_money import MoneyModel
+from examples.boltzman_money import MoneyModel
 
 
 class GiniElement(TextElement):
@@ -14,7 +14,7 @@ class GiniElement(TextElement):
         return f"The Gini Coefficient is {value}"
 
 
-def MoneyDraw(agent):
+def agent_shape(agent):
     if agent:
         return {
             "Shape": "circle",
@@ -28,7 +28,7 @@ def MoneyDraw(agent):
 if __name__ == "__main__":
     height, width = (50, 10)
     g_element = GiniElement()
-    canvas_element = CanvasGrid(MoneyDraw, height, width, 500, 500)
+    canvas_element = CanvasGrid(agent_shape, height, width, 500, 500)
     gini_chart = ChartModule([{"Label": "Gini", "Color": "Black"}])
 
     model_params = {

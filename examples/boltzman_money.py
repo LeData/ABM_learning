@@ -4,15 +4,7 @@ from mesa.time import RandomActivation
 from mesa.space import MultiGrid
 
 
-def compute_gini(model):
-    agent_wealths = [agent.wealth for agent in model.schedule.agents]
-    x = sorted(agent_wealths)
-    N = model.num_agents
-    B = sum(xi * (N - i) for i, xi in enumerate(x)) / (N * sum(x))
-    return 1 + (1 / N) - 2 * B
-
-
-class MoneyAgent(Agent):
+class MoneyA(Agent):
 
     def __init__(self, unique_id, model: Model):
         super().__init__(unique_id=unique_id, model=model)
@@ -51,6 +43,14 @@ class MoneyAgent(Agent):
             self.give_to(receiver, amount)
 
 
+def compute_gini(model):
+    agent_wealths = [agent.wealth for agent in model.schedule.agents]
+    x = sorted(agent_wealths)
+    N = model.num_agents
+    B = sum(xi * (N - i) for i, xi in enumerate(x)) / (N * sum(x))
+    return 1 + (1 / N) - 2 * B
+
+
 class MoneyModel(Model):
 
     def __init__(self, n: int, width, height):
@@ -60,7 +60,7 @@ class MoneyModel(Model):
         self.schedule = RandomActivation(self)
 
         for i in range(self.num_agents):
-            a = MoneyAgent(i, self)
+            a = MoneyA(i, self)
             self.schedule.add(a)
             pos = tuple(self.random.randrange(p) for p in (self.grid.width, self.grid.height))
             self.grid.place_agent(a, pos=pos)  # This modifies the agent's x,y property directly
