@@ -16,8 +16,8 @@ def agent_shape(agent):
             }
     if agent:
         portrayal["Filled"] = agent.paired,
-        portrayal["Color"] = colors[agent.type]
-        if agent.type == "M":
+        portrayal["Color"] = colors[agent.sex]
+        if agent.sex == "M":
             portrayal["Shape"] = "circle"
             portrayal["r"] = 1
         else:
