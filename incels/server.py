@@ -2,7 +2,7 @@ from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid, ChartModule
 from mesa.visualization.UserParam import UserSettableParameter
 
-from examples.mating import MatingModel
+from .model import MatingModel
 
 colors = {
     "M": "#ffcc00ff", # yellow

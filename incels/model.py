@@ -172,7 +172,7 @@ class MatingA(Agent):
 
 # noinspection PyPep8Naming
 class MatingModel(Model):
-    types = ["M", "F"]
+    sexes = ["M", "F"]
 
     def __init__(self, num_agents, balance, it_M, it_F, width, height):
         interest_thresholds = {
@@ -201,13 +201,13 @@ class MatingModel(Model):
 
         self.datacollector = DataCollector(model_reporters={
                                                 **{f"Incel_{a_t}": partial(compute_incel_prop, sex=a_t)
-                                                   for a_t in self.types},
+                                                   for a_t in self.sexes},
                                                 "Incel": compute_incel_prop,
                                                 **{f"Single_{a_t}": partial(compute_singles_prop,sex=a_t)
-                                                   for a_t in self.types},
+                                                   for a_t in self.sexes},
                                                 "Single": compute_singles_prop,
                                                 **{f"Avg_rej_{a_t}": partial(compute_singles_rejections, sex=a_t)
-                                                   for a_t in self.types},
+                                                   for a_t in self.sexes},
                                                 "Avg_rej": compute_singles_rejections
                                                 },
                                            agent_reporters={
