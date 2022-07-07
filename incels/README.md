@@ -15,3 +15,5 @@ python server.py
 ```
 
 ## Further reading
+
+[medium article](https://ledata.medium.com/can-you-program-incels-with-python-9d05a9fefec6)
